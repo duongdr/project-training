@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    // Admin routes
+    Route::prefix('admin')->group(function () {
+        Route::get('home', 'DashboardController@index');
+        Route::prefix('user')->group(function (){
+            Route::get('index', 'UserController@index');
+        });
+    });
 });
+
+Route::post('userLogin', 'AuthController@login')->name('userLogin');
+Route::get('logout', 'AuthController@logout')->name('logout');
+Auth::routes();
