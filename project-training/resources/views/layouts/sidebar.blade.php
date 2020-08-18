@@ -15,18 +15,19 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
-                <li class="active">
-                    <a href="#">
+                {{--                <li class="active">--}}
+                <li>
+                    <a href="{{asset('admin/home')}}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{asset('admin/user/index')}}">
                         <i class="fa fa-users"></i> <span>Users</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{asset('admin/post/index')}}">
                         <i class="fa fa-folder"></i> <span>Posts</span>
                     </a>
                 </li>

@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function (){
             Route::get('index', 'UserController@index');
         });
+        Route::prefix('post')->group(function () {
+            Route::get('index','PostController@index');
+        });
     });
 });
 
