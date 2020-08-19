@@ -7,14 +7,14 @@
                 <img src={{asset("images/avatar.png")}} class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Hello, {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
+                <p>Hello, {{\Auth::user()->name}}</p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            @if(\Illuminate\Support\Facades\Auth::user()->role == 1)
+            @if(\Auth::user()->role == 1)
                 {{--                <li class="active">--}}
                 <li>
                     <a href="{{asset('admin/home')}}">

@@ -20,8 +20,8 @@
                                     <h3 class="box-title">Data Table</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive">
-                                    <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-success" action="#">+
-                                    </button>
+                                    <a type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-success" href="{{asset(('admin/user/create'))}}">+
+                                    </a>
                                     <br>
                                     <br>
                                     <table id="example2" class="table table-bordered table-hover">
@@ -50,14 +50,16 @@
                                             <td class="pmd-table-row-action">
                                                 <div >
                                                     {{-- Edit button --}}
-                                                    <a class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
+                                                    <button class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
                                                         <i class="material-icons md-dark pmd-xs"><i class="fa fa-edit"></i></i>
-                                                    </a>
+                                                    </button>
 
                                                     {{-- Delete form --}}
-                                                    <a class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">
-                                                        <i class="material-icons md-dark pmd-xs"><i class="fa fa-trash-o"></i></i>
-                                                    </a>
+                                                    <form action="{{ url('/admin/user/delete/'.$user['id']) }}" method="get">
+                                                        <button type="submit"  onclick="return confirm('Bạn có chắc chắn muốn xóa mục này ?')" class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">
+                                                                <i class="material-icons md-dark pmd-xs"><i class="fa fa-trash-o"></i></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -68,9 +70,6 @@
                             </div><!-- /.box -->
                         </div>
                     </div>
-
-
-
         </div><!-- ./wrapper -->
     </section>
 

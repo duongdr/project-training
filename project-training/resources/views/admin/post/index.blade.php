@@ -20,15 +20,15 @@
                             <h3 class="box-title">Data Table</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body table-responsive">
-                            <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-success" action="#">+
-                            </button>
+                            <a type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-success" href="{{asset('admin/post/create')}}">+
+                            </a>
                             <br>
                             <br>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name Book</th>
+                                    <th>Title</th>
                                     <th>Content</th>
                                     <th>Author</th>
                                     <th>Action</th>

@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
+
+use App\Http\Services\PostService;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
+    protected $postService;
 
+    /**
+     * ExamController constructor.
+     *
+     * @param PostService $postService
+     */
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
     public function index()
     {
-        $posts = Post::with('author')->get();
+        $posts = $this->postService->getAllPost();
        // dd($posts);
         return view('admin.post.index',compact('posts'));
     }
@@ -18,15 +32,14 @@ class PostController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.post.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
+
     public function store(Request $request)
     {
-        //
+//        $id = $this->postService->storePost();
+        return $request;
     }
 
 

@@ -19,9 +19,14 @@ Route::middleware('auth')->group(function () {
         Route::get('home', 'DashboardController@index');
         Route::prefix('user')->group(function (){
             Route::get('index', 'UserController@index');
+            Route::get('create','UserController@create');
+            Route::post('create','UserController@store')->name('storeUser');
+            Route::get('delete/{id}','UserController@destroy');
         });
         Route::prefix('post')->group(function () {
             Route::get('index','PostController@index');
+            Route::get('create','PostController@create');
+            Route::post('create','PostController@store')->name('storePost');
         });
     });
 });
