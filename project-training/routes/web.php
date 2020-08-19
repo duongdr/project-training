@@ -29,6 +29,16 @@ Route::middleware('auth')->group(function () {
             Route::post('create','PostController@store')->name('storePost');
         });
     });
+    Route::prefix('user')->group(function (){
+       Route::get('home','UserHomeController@index');
+        Route::prefix('post')->group(function () {
+            Route::get('index','PostController@index');
+            Route::get('create','PostController@create');
+            Route::post('create','PostController@store')->name('storePost');
+            Route::get('{id}', 'PostController@show');
+            Route::post('{post}', 'PostController@update')->name('updatePost');
+        });
+    });
 });
 
 Route::post('userLogin', 'AuthController@login')->name('userLogin');

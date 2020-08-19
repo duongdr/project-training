@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Services\PostService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class PostController extends Controller
@@ -24,9 +26,18 @@ class PostController extends Controller
     }
     public function index()
     {
-        $posts = $this->postService->getAllPost();
+        $id = Auth::id();
+        $user = User::find($id);
+        $role = $user['role'];
+        if ($role == 1) {
+            $posts = $this->postService->getAllPost();
+            return view('admin.post.index',compact('posts'));
+        } else {
+            $posts = $this->postService->getOwnPost($id);
+            return view('user.post.index', ['posts' => $posts]);
+        }
+
        // dd($posts);
-        return view('admin.post.index',compact('posts'));
     }
 
 
@@ -38,14 +49,15 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-//        $id = $this->postService->storePost();
-        return $request;
+        $id = Auth::id();
+        $this->postService->storePost($request,$id);
+        return redirect()->back()->with('message', 'IT WORKS!');
     }
 
 
-    public function show($id)
+    public function show(Post $id)
     {
-        //
+        return view('user.post.edit',['post'=>$id]);
     }
 
     /**
@@ -62,13 +74,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Post $post
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        $post->fill($data);
+        DB::beginTransaction();
+        try {
+            $post->save();
+            DB::commit();
+            return redirect('/user/post/index');
+        } catch (\Exception $e) {
+            throwException($e);
+        }
     }
 
     /**

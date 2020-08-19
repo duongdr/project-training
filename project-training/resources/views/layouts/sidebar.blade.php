@@ -33,7 +33,12 @@
                 </li>
             @else
                 <li>
-                    <a href="#">
+                    <a href="{{asset('user/home')}}">
+                        <i class="fa fa-folder"></i> <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{asset('user/post/index')}}">
                         <i class="fa fa-folder"></i> <span>Posts</span>
                     </a>
                 </li>

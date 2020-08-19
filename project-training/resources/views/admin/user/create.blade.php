@@ -40,6 +40,9 @@
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                        placeholder="Enter Email" required>
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Position</label>
@@ -52,13 +55,16 @@
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" class="form-control" id="password" name="password"
                                        placeholder="Password" required>
+                                @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                                       placeholder="Enter confirm password" required>
-                            </div>
-                        </div><!-- /.box-body -->
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Password Confirm</label>--}}
+{{--                                <input type="password" class="form-control" id="cpassword-confirm" name="confirm_password"--}}
+{{--                                       placeholder="Enter password confirm " required>--}}
+{{--                            </div>--}}
+                        </div>
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
