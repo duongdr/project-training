@@ -31,6 +31,8 @@
                                     <th>Title</th>
                                     <th>Content</th>
                                     <th>Author</th>
+                                    <th>Time Created</th>
+                                    <th>Time Updated</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -41,17 +43,23 @@
                                         <td>{{$post['title']}}</td>
                                         <td>{{$post['content']}}</td>
                                         <td>{{$post['author']->name}}</td>
+                                        <td>{{$post['created_at']}}</td>
+                                        <td>{{$post['updated_at']}}</td>
                                         <td class="pmd-table-row-action">
                                             <div >
                                                 {{-- Edit button --}}
-                                                <a class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
+                                                <a href="{{ asset('admin/post/'.$post['id']) }}" method="get" class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
                                                     <i class="material-icons md-dark pmd-xs"><i class="fa fa-edit"></i></i>
                                                 </a>
-
                                                 {{-- Delete form --}}
-                                                <a class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">
-                                                    <i class="material-icons md-dark pmd-xs"><i class="fa fa-trash-o"></i></i>
-                                                </a>
+{{--                                                <a class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">--}}
+{{--                                                    <i class="material-icons md-dark pmd-xs"><i class="fa fa-trash-o"></i></i>--}}
+{{--                                                </a>--}}
+                                                <form action="{{ url('/admin/post/delete/'.$post['id']) }}" method="get">
+                                                    <button type="submit"  onclick="return confirm('Bạn có chắc chắn muốn xóa mục này ?')" class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">
+                                                        <i class="material-icons md-dark pmd-xs"><i class="fa fa-trash-o"></i></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

@@ -32,6 +32,8 @@
                                             <th>Email</th>
                                             <th>Position</th>
                                             <th>Total Posts</th>
+                                            <th>Time Created</th>
+                                            <th>Time Updated</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -47,13 +49,15 @@
                                                 <td>User Normal</td>
                                             @endif
                                             <td>{{$user['posts_count']}}</td>
+                                            <td>{{$user['created_at']}}</td>
+                                            <td>{{$user['updated_at']}}</td>
                                             <td class="pmd-table-row-action">
                                                 <div >
                                                     {{-- Edit button --}}
-                                                    <button class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
-                                                        <i class="material-icons md-dark pmd-xs"><i class="fa fa-edit"></i></i>
-                                                    </button>
 
+                                                    <a href="{{ asset('admin/user/'.$user['id']) }}" method="get" class="btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info">
+                                                        <i class="material-icons md-dark pmd-xs"><i class="fa fa-edit"></i></i>
+                                                    </a>
                                                     {{-- Delete form --}}
                                                     <form action="{{ url('/admin/user/delete/'.$user['id']) }}" method="get">
                                                         <button type="submit"  onclick="return confirm('Bạn có chắc chắn muốn xóa mục này ?')" class=" btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger">

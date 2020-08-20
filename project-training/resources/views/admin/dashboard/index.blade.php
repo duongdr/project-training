@@ -24,7 +24,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="{{asset('admin/user/index')}}" class="small-box-footer">
+                <a href="{{asset('admin/user')}}" class="small-box-footer">
                     More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -43,7 +43,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="{{asset('admin/post/index')}}" class="small-box-footer">
+                <a href="{{asset('admin/post')}}" class="small-box-footer">
                     More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>

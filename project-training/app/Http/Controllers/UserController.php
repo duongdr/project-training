@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Services\UserService;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -41,16 +43,13 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * public function show($id)
-     * {
-     * //
-     * }
-     *
-     * /**
+
+     public function show(User $id)
+     {
+         return view('admin.user.edit',['user'=>$id]);
+     }
+
+     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
@@ -64,9 +63,21 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,User $user)
     {
-        //
+        $data = $request->all();
+        $user->fill($data);
+        $password = $data['password'];
+        $user->password = Hash::make($password);
+
+        DB::beginTransaction();
+        try {
+            $user->save();
+            DB::commit();
+                return redirect('/admin/user');
+        } catch (\Exception $e) {
+            throwException($e);
+        }
     }
 
     /**

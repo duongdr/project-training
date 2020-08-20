@@ -13,11 +13,6 @@
     </section>
     <section class="content">
         <div class="row">
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-        @endif
         <!-- left column -->
             <div class="col-md-6">
                 <div class="box box-primary">
@@ -25,7 +20,7 @@
                         <h3 class="box-title">Form Edit Post</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{url('user/post/' . $post->id)}}" method="POST">
+                    <form role="form" action="{{url('admin/post/' . $post->id)}}" method="POST">
                         {{csrf_field()}}
                         <div class="box-body">
                             <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Services;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,5 +21,15 @@ class PostService {
            'user_id' => $id
         ]);
         return $post;
+    }
+    public function deleteOnePost($id) {
+        $post = Post::find($id);
+        $post->delete();
+        return 'OK';
+    }
+    public function Role($id) {
+        $user = User::find($id);
+        $role = $user->role;
+        return $role;
     }
 }

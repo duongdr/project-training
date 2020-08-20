@@ -24,20 +24,22 @@ class PostController extends Controller
     {
         $this->postService = $postService;
     }
+
     public function index()
     {
         $id = Auth::id();
-        $user = User::find($id);
-        $role = $user['role'];
+//        $user = User::find($id);
+//        $role = $user['role'];
+        $role = $this->postService->Role($id);
         if ($role == 1) {
             $posts = $this->postService->getAllPost();
-            return view('admin.post.index',compact('posts'));
+            return view('admin.post.index', ['posts' => $posts]);
         } else {
             $posts = $this->postService->getOwnPost($id);
             return view('user.post.index', ['posts' => $posts]);
         }
 
-       // dd($posts);
+        // dd($posts);
     }
 
 
@@ -50,20 +52,27 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $id = Auth::id();
-        $this->postService->storePost($request,$id);
+        $this->postService->storePost($request, $id);
         return redirect()->back()->with('message', 'IT WORKS!');
     }
 
 
     public function show(Post $id)
     {
-        return view('user.post.edit',['post'=>$id]);
+        $ids = Auth::id();
+        $role = $this->postService->Role($ids);
+        if ($role == 1) {
+            return view('admin.post.edit', ['post' => $id]);
+        } else {
+            return view('user.post.edit', ['post' => $id]);
+        }
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -82,11 +91,18 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post->fill($data);
+        $id = Auth::id();
+        $role = $this->postService->Role($id);
         DB::beginTransaction();
         try {
             $post->save();
             DB::commit();
-            return redirect('/user/post/index');
+            if ($role == 1) {
+                return redirect('/admin/post');
+            } else {
+                return redirect('/user/post');
+            }
+
         } catch (\Exception $e) {
             throwException($e);
         }
@@ -95,11 +111,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
      */
     public function destroy($id)
     {
-        //
+        $mess = $this->postService->deleteOnePost($id);
+        return redirect()->back()->with($mess);
     }
 }

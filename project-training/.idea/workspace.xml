@@ -20,13 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ba43576-2f7f-4803-bcce-3217879ebf83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/PostService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PostService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_17_151956_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_17_151956_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/post/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/post/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/post/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,18 +51,15 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/user/post" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/user" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\project-training\project-training\resources\views\admin\user" />
+      <recent name="C:\xampp\htdocs\project-training\project-training\resources\views\admin\post" />
       <recent name="C:\xampp\htdocs\project-training\project-training\resources\views\user\post" />
       <recent name="C:\xampp\htdocs\project-training\project-training\app\Http\Controllers" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -65,6 +71,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597909675790">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597909675790" />
     <state x="604" y="336" key="NewPhpFileDialog" timestamp="1597850893193">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

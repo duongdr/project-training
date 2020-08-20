@@ -22,12 +22,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{asset('admin/user/index')}}">
+                    <a href="{{asset('admin/user')}}">
                         <i class="fa fa-users"></i> <span>Users</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{asset('admin/post/index')}}">
+                    <a href="{{asset('admin/post')}}">
                         <i class="fa fa-folder"></i> <span>Posts</span>
                     </a>
                 </li>
@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{asset('user/post/index')}}">
+                    <a href="{{asset('user/post')}}">
                         <i class="fa fa-folder"></i> <span>Posts</span>
                     </a>
                 </li>
