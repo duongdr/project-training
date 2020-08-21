@@ -41,6 +41,10 @@ class PostController extends Controller
 
         // dd($posts);
     }
+    public function indexTest() {
+        $posts = $this->postService->getAllPost();
+        return view('admin.post.index-test',['posts'=>$posts]);
+    }
 
 
     public function create()
