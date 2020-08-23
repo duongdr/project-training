@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostService {
-    public function getAllPost() {
-        $posts = Post::with('author')->get();
+    public function getAllPost($offset, $limit) {
+        $posts = Post::with('author')->offset($offset)->limit($limit)->get();
         return $posts;
     }
     public function getOwnPost($id) {

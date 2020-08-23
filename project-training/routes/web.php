@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::prefix('post')->group(function () {
         Route::get('/', 'PostController@index');
         Route::get('test','PostController@indexTest');
+        Route::get('getJson','PostController@getJson');
         Route::get('create', 'PostController@create');
         Route::post('create', 'PostController@store')->name('storePost');
         Route::get('{id}', 'PostController@show');

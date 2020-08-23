@@ -42,8 +42,12 @@ class PostController extends Controller
         // dd($posts);
     }
     public function indexTest() {
-        $posts = $this->postService->getAllPost();
-        return view('admin.post.index-test',['posts'=>$posts]);
+        return view('admin.post.index-test');
+    }
+
+    public function getJson(Request $request) {
+        $posts = $this->postService->getAllPost(intval($request->query('start')), intval($request->query('length')));
+        return ['recordsTotal' => Post::count(), "recordsFiltered" => Post::count(), 'data' => $posts];
     }
 
 
