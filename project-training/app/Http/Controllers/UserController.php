@@ -27,6 +27,22 @@ class UserController extends Controller
         return view('admin.user.index', compact('users'));
     }
 
+    public function indexTest()
+    {
+        return view('admin.user.index-test');
+    }
+
+    public function getJson(Request $request)
+    {
+        $search = $request->query('search');
+        $searchTerm = $search['value'];
+
+        $users = $this->userService->findAllUsers(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+        $total = $this->userService->countUsers(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+
+        return ['recordsTotal' => $total, "recordsFiltered" => $total, 'data' => $users];
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,12 +60,12 @@ class UserController extends Controller
     }
 
 
-     public function show(User $id)
-     {
-         return view('admin.user.edit',['user'=>$id]);
-     }
+    public function show(User $id)
+    {
+        return view('admin.user.edit', ['user' => $id]);
+    }
 
-     /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
@@ -63,7 +79,7 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param int $id
      */
-    public function update(Request $request,User $user)
+    public function update(Request $request, User $user)
     {
         $data = $request->all();
         $user->fill($data);
@@ -74,7 +90,7 @@ class UserController extends Controller
         try {
             $user->save();
             DB::commit();
-                return redirect('/admin/user');
+            return redirect('/admin/user');
         } catch (\Exception $e) {
             throwException($e);
         }

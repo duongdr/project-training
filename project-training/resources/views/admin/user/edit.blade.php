@@ -3,12 +3,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Post
+            User
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
             <li><a><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Post</li>
+            <li class="active">User</li>
         </ol>
     </section>
     <section class="content">
@@ -17,7 +17,7 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Form Edit Post</h3>
+                        <h3 class="box-title">Form Edit User</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{url('admin/user/' . $user->id)}}" method="POST">

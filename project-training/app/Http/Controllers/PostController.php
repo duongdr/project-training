@@ -32,7 +32,7 @@ class PostController extends Controller
 //        $role = $user['role'];
         $role = $this->postService->Role($id);
         if ($role == 1) {
-            $posts = $this->postService->getAllPost();
+            $posts = $this->postService->getAllPosts();
             return view('admin.post.index', ['posts' => $posts]);
         } else {
             $posts = $this->postService->getOwnPost($id);
@@ -41,13 +41,22 @@ class PostController extends Controller
 
         // dd($posts);
     }
-    public function indexTest() {
+
+    public function indexTest()
+    {
         return view('admin.post.index-test');
     }
 
-    public function getJson(Request $request) {
-        $posts = $this->postService->getAllPost(intval($request->query('start')), intval($request->query('length')));
-        return ['recordsTotal' => Post::count(), "recordsFiltered" => Post::count(), 'data' => $posts];
+    public function getJson(Request $request)
+    {
+
+        $search = $request->query('search');
+        $searchTerm = $search['value'];
+
+        $posts = $this->postService->findAllPost(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+        $total = $this->postService->countPosts(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+
+        return ['recordsTotal' => $total, "recordsFiltered" => $total, 'data' => $posts];
     }
 
 

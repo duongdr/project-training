@@ -1,13 +1,30 @@
 <?php
+
 namespace App\Http\Services;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserService {
-    public function getAllUser() {
+class UserService
+{
+    public function getAllUser()
+    {
         return User::withCount('posts')->get();
     }
-    public function storeUser($para) {
+
+    public function findAllUsers($offset, $limit, $searchTerm)
+    {
+        return User::query()->withCount('posts')->where('name', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('email', 'LIKE', "{$searchTerm}")
+            ->offset($offset)->limit($limit)->get();
+    }
+    public function countUsers($offset, $limit, $searchTerm )
+    {
+        return User::query()->where('name', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('email', 'LIKE', "{$searchTerm}")->count();
+    }
+    public function storeUser($para)
+    {
         $user = User::create([
             'name' => $para['name'],
             'email' => $para['email'],
@@ -16,11 +33,15 @@ class UserService {
         ]);
         return $user;
     }
-    public function findOneUser($para) {
+
+    public function findOneUser($para)
+    {
         $user = User::find($para);
         return $user;
     }
-    public function deleteOneUser($id) {
+
+    public function deleteOneUser($id)
+    {
         $user = $this->findOneUser($id);
         $user->delete();
         return 'OK';

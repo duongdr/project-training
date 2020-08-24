@@ -6,12 +6,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostService {
-    public function getAllPost($offset, $limit) {
-        $posts = Post::with('author')->offset($offset)->limit($limit)->get();
-        return $posts;
+    public function findAllPost($offset, $limit, $searchTerm) {
+
+        return Post::with('author')->where('title','LIKE', "%{$searchTerm}%")
+            ->orWhere('content','LIKE', "%{$searchTerm}%")
+            ->offset($offset)->limit($limit)->get();
+    }
+    public function countPosts($offset, $limit, $searchTerm) {
+        return Post::where('title','LIKE', "%{$searchTerm}%")
+            ->orWhere('content','LIKE', "%{$searchTerm}%")->count();
+    }
+    public function getAllPosts() {
+        return Post::with('author')->get();
     }
     public function getOwnPost($id) {
-        $posts = DB::table('posts')->where('user_id',$id)->get();
+//        $posts = DB::table('posts')->where('user_id',$id)->get();
+        $posts = Post::where('user_id',$id)->get();
         return $posts;
     }
     public function storePost($para , $id) {

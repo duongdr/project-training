@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Auth;
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('home', 'DashboardController@index');
     Route::prefix('user')->group(function () {
-        Route::get('/', 'UserController@index');
+        Route::get('test', 'UserController@index');
+        Route::get('/','UserController@indexTest');
+        Route::get('get-json','UserController@getJson');
         Route::get('create', 'UserController@create');
         Route::post('create', 'UserController@store')->name('storeUser');
         Route::get('delete/{id}', 'UserController@destroy');
@@ -27,9 +29,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::post('{user}', 'UserController@update');
     });
     Route::prefix('post')->group(function () {
-        Route::get('/', 'PostController@index');
-        Route::get('test','PostController@indexTest');
-        Route::get('getJson','PostController@getJson');
+        Route::get('test', 'PostController@index');
+        Route::get('/','PostController@indexTest');
+        Route::get('get-json','PostController@getJson');
         Route::get('create', 'PostController@create');
         Route::post('create', 'PostController@store')->name('storePost');
         Route::get('{id}', 'PostController@show');
