@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Services\Interfaces\PostInterface;
+use App\Http\Services\PostService;
 use App\Models\User;
 use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PostInterface::class, PostService::class);
     }
 
     /**

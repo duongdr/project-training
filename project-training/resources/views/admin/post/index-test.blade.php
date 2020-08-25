@@ -16,14 +16,14 @@
         </a>
         <br>
         <table id="example" class="display" width="100%">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Author</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+            <thead>
+            <tr>
+                <th width="10%">Title</th>
+                <th>Content</th>
+                <th width="10%">Author</th>
+                <th width="10%">Action</th>
+            </tr>
+            </thead>
         </table>
     </section>
     <section class="content">
@@ -45,11 +45,18 @@
                     {"data": "title"},
                     {"data": "content"},
                     {"data": "author.name"},
-                    {"data": null, "render": function (data) {
-                        return "<a class= 'btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info' a href='/admin/post/" + data.id + "'" + "><i class='fa fa-edit'></i></a>" +
-                            "<a class='btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger' onclick='return confirm(\"Are you sure?\")' style='margin-left: 20px' href='/admin/post/delete/" + data.id + "'" + "><i class='fa fa-trash-o'></i></a>"
-                        }},
+                    {
+                        "data": null, "render": function (data) {
+                            return "<a class= 'btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-info' a href='/admin/post/" + data.id + "'" + "><i class='fa fa-edit'></i></a>" +
+                                "<a class='btn-sm btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-danger' onclick='return confirm(\"Are you sure?\")' style='margin-left: 20px' href='/admin/post/delete/" + data.id + "'" + "><i class='fa fa-trash-o'></i></a>"
+                        }
+                    },
                 ],
+                "columnDefs": [
+                    {"orderable": false, "targets": 1},
+                    {"orderable": false, "targets": 2},
+                    {"orderable": false, "targets": 3},
+                ]
             });
         });
     </script>

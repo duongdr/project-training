@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Interfaces\PostInterface;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class PostController extends Controller
      *
      * @param PostService $postService
      */
-    public function __construct(PostService $postService)
+    public function __construct(PostInterface $postService)
     {
         $this->postService = $postService;
     }
@@ -52,11 +53,14 @@ class PostController extends Controller
 
         $search = $request->query('search');
         $searchTerm = $search['value'];
+        $sort = $request->query('order');
+        $order = $sort['0']['dir'];
 
-        $posts = $this->postService->findAllPost(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+        $posts = $this->postService->findAllPost(intval($request->query('start')), intval($request->query('length')), $searchTerm, $order);
         $total = $this->postService->countPosts(intval($request->query('start')), intval($request->query('length')), $searchTerm);
 
         return ['recordsTotal' => $total, "recordsFiltered" => $total, 'data' => $posts];
+//        return $sort;
     }
 
 

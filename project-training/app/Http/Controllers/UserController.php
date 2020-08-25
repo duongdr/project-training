@@ -36,11 +36,15 @@ class UserController extends Controller
     {
         $search = $request->query('search');
         $searchTerm = $search['value'];
+        $sort = $request->query('order');
+        $order = $sort['0']['dir'];
+      //  $orderby = $order['dir'];
 
-        $users = $this->userService->findAllUsers(intval($request->query('start')), intval($request->query('length')), $searchTerm);
+        $users = $this->userService->findAllUsers(intval($request->query('start')), intval($request->query('length')), $searchTerm, $order);
         $total = $this->userService->countUsers(intval($request->query('start')), intval($request->query('length')), $searchTerm);
 
         return ['recordsTotal' => $total, "recordsFiltered" => $total, 'data' => $users];
+//        return $order;
     }
 
     /**

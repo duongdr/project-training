@@ -12,10 +12,10 @@ class UserService
         return User::withCount('posts')->get();
     }
 
-    public function findAllUsers($offset, $limit, $searchTerm)
+    public function findAllUsers($offset, $limit, $searchTerm, $order)
     {
         return User::query()->withCount('posts')->where('name', 'LIKE', "%{$searchTerm}%")
-            ->orWhere('email', 'LIKE', "{$searchTerm}")
+            ->orWhere('email', 'LIKE', "{$searchTerm}")->orderBy('name',$order)
             ->offset($offset)->limit($limit)->get();
     }
     public function countUsers($offset, $limit, $searchTerm )
