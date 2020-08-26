@@ -27,7 +27,7 @@
                         <h3 class="box-title">Form Created Post</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{Route('storePostAdmin')}}" method="POST">
+                    <form role="form" action="{{Route('storePost')}}" method="POST">
                         {{csrf_field()}}
                         <div class="box-body">
                             <div class="form-group">

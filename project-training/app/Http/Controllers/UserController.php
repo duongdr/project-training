@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Interfaces\UserInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Services\UserService;
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     protected $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserInterface $userService)
     {
         $this->userService = $userService;
     }
