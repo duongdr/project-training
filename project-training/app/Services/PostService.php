@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Http\Services;
+
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Services\Interfaces\PostInterface;
+
+class PostService implements PostInterface
+{
+    public function findAllPost($offset, $limit, $searchTerm, $order)
+    {
+
+        return Post::with('author')->where('title', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('content', 'LIKE', "%{$searchTerm}%")
+            ->offset($offset)->limit($limit)->orderBy('title', $order)->get();
+    }
+
+    public function countPosts($offset, $limit, $searchTerm)
+    {
+        return Post::where('title', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('content', 'LIKE', "%{$searchTerm}%")->count();
+    }
+
+    public function getAllPosts()
+    {
+        return Post::with('author')->get();
+    }
+
+    public function getOwnPost($id)
+    {
+//        $posts = DB::table('posts')->where('user_id',$id)->get();
+        $posts = Post::where('user_id', $id)->get();
+        return $posts;
+    }
+
+    public function storePost($para, $id)
+    {
+        $post = Post::create([
+            'title' => $para['title'],
+            'content' => $para['content'],
+            'user_id' => $id
+        ]);
+        return $post;
+    }
+
+    public function deleteOnePost($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return 'OK';
+    }
+
+    public function Role($id)
+    {
+        $user = User::find($id);
+        $role = $user->role;
+        return $role;
+    }
+}
