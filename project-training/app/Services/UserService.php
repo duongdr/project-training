@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Services\Interfaces\UserInterface;
+use App\Mail\SendMailUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,6 +46,11 @@ class UserService implements UserInterface
     {
         $user = $this->findOneUser($id);
         $user->delete();
+        return 'OK';
+    }
+    public function sendMail($email) {
+
+        \Mail::to($email)->send(new SendMailUser());
         return 'OK';
     }
 }

@@ -60,7 +60,9 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $this->userService->storeUser($request);
-        return redirect()->back()->with('message', 'IT WORKS!');
+        $email = $request->only('email');
+        $this->userService->sendMail($email);
+        return redirect()->back()->with('message', 'IT WORKS! SENT MAIL.' );
 
     }
 
