@@ -63,6 +63,10 @@ class PostController extends Controller
     {
         return view('admin.post.create');
     }
+    public function creatByUser()
+    {
+        return view('user.post.create');
+    }
 
 
     public function store(Request $request)

@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/','PostController@indexTest');
         Route::get('get-json','PostController@getJson');
         Route::get('create', 'PostController@create');
-        Route::post('create', 'PostController@store')->name('storePost');
+        Route::post('create', 'PostController@store')->name('storePostAdmin');
         Route::get('{id}', 'PostController@show');
         Route::post('{post}', 'PostController@update');
         Route::get('delete/{id}', 'PostController@destroy');
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
     Route::get('home', 'UserHomeController@index');
     Route::prefix('post')->group(function () {
         Route::get('/', 'PostController@index');
-        Route::get('create', 'PostController@create');
+        Route::get('create', 'PostController@creatByUser');
         Route::post('create', 'PostController@store')->name('storePost');
         Route::get('{id}', 'PostController@show');
         Route::post('{post}', 'PostController@update')->name('updatePost');
