@@ -4,9 +4,6 @@ namespace App\Http\Services;
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Http\Services\Interfaces\PostInterface;
 
 class PostService
 {
