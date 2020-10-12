@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Services\Interfaces\PostInterface;
 
-class PostService implements PostInterface
+class PostService
 {
     public function findAllPost($offset, $limit, $searchTerm, $order)
     {
@@ -31,7 +31,6 @@ class PostService implements PostInterface
 
     public function getOwnPost($id)
     {
-//        $posts = DB::table('posts')->where('user_id',$id)->get();
         $posts = Post::where('user_id', $id)->get();
         return $posts;
     }

@@ -21,7 +21,7 @@ class PostController extends Controller
      *
      * @param PostService $postService
      */
-    public function __construct(PostInterface $postService)
+    public function __construct(PostService $postService)
     {
         $this->postService = $postService;
     }
@@ -29,8 +29,6 @@ class PostController extends Controller
     public function index()
     {
         $id = Auth::id();
-//        $user = User::find($id);
-//        $role = $user['role'];
         $role = $this->postService->Role($id);
         if ($role == 1) {
             $posts = $this->postService->getAllPosts();
@@ -39,8 +37,6 @@ class PostController extends Controller
             $posts = $this->postService->getOwnPost($id);
             return view('user.post.index', ['posts' => $posts]);
         }
-
-        // dd($posts);
     }
 
     public function indexTest()
@@ -60,7 +56,6 @@ class PostController extends Controller
         $total = $this->postService->countPosts(intval($request->query('start')), intval($request->query('length')), $searchTerm);
 
         return ['recordsTotal' => $total, "recordsFiltered" => $total, 'data' => $posts];
-//        return $sort;
     }
 
 

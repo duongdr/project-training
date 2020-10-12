@@ -11,7 +11,7 @@ class AuthController extends Controller
     public function login(Request $request) {
         $credentials = $request->only(['email', 'password']);
         if (!Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Invalid user']);
+            return redirect('login')->with(['error' => 'Invalid user']);
         } else {
             $id = Auth::id();
             $user = User::find($id);
