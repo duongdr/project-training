@@ -2,11 +2,10 @@
 
 namespace App\Http\Services;
 
-use App\Http\Services\Interfaces\UserInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UserService implements UserInterface
+class UserService
 {
     public function getAllUser()
     {
