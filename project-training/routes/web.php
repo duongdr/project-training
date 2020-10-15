@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 
 //Route::middleware('auth')->group(function () {
 // Admin routes
-
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('home', 'DashboardController@index');
     Route::prefix('user')->group(function () {
@@ -51,7 +50,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'user'], function () {
     });
 });
 //});
-
+Route::get('/','HomeController@index');
 Route::post('userLogin', 'AuthController@login')->name('userLogin');
 Route::get('logout', 'AuthController@logout')->name('logout');
 Auth::routes();

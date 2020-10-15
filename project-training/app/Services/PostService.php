@@ -37,6 +37,7 @@ class PostService
         $post = Post::create([
             'title' => $para['title'],
             'content' => $para['content'],
+            'description' => $para['description'],
             'user_id' => $id
         ]);
         return $post;
