@@ -14,7 +14,7 @@ class AddDescriptionToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('description');
+            $table->string('description')->after('content');
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Interfaces\PostInterface;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -61,11 +62,13 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.post.create');
+        $categories = Category::all();
+        return view('admin.post.create',['categories'=>$categories]);
     }
     public function creatByUser()
     {
-        return view('user.post.create');
+        $categories = Category::all();
+        return view('user.post.create',['categories'=>$categories]);
     }
 
 
@@ -81,10 +84,11 @@ class PostController extends Controller
     {
         $ids = Auth::id();
         $role = $this->postService->Role($ids);
+        $categories = Category::all();
         if ($role == 1) {
-            return view('admin.post.edit', ['post' => $id]);
+            return view('admin.post.edit', ['post' => $id ,'categories' => $categories]);
         } else {
-            return view('user.post.edit', ['post' => $id]);
+            return view('user.post.edit', ['post' => $id,'categories' => $categories]);
         }
 
     }

@@ -31,6 +31,11 @@
                         <i class="fa fa-folder"></i> <span>Posts</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{asset('admin/category')}}">
+                        <i class="fa fa-dashboard"></i> <span>Category</span>
+                    </a>
+                </li>
             @else
                 <li>
                     <a href="{{asset('user/home')}}">
