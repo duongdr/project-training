@@ -10,7 +10,7 @@ class PostService
     public function findAllPost($offset, $limit, $searchTerm, $order)
     {
 
-        return Post::with('author')->where('title', 'LIKE', "%{$searchTerm}%")
+        return Post::with('author','category')->where('title', 'LIKE', "%{$searchTerm}%")
             ->orWhere('content', 'LIKE', "%{$searchTerm}%")
             ->offset($offset)->limit($limit)->orderBy('title', $order)->get();
     }
@@ -37,7 +37,9 @@ class PostService
         $post = Post::create([
             'title' => $para['title'],
             'content' => $para['content'],
-            'user_id' => $id
+            'description' => $para['description'],
+            'user_id' => $id,
+            'category_id' => $para['category_id']
         ]);
         return $post;
     }

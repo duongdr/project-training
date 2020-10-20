@@ -36,8 +36,21 @@
                                        required>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Description</label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Enter Title"
+                                       required>
+                            </div>
+                            <div class="form-group">
                                 <label>Content</label>
                                 <textarea class="form-control" name="content" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Category</label>
+                                <select class="form-control" id="category_id" name="category_id">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category['id']}}">{{$category['name']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div><!-- /.box-body -->
                         <div class="box-footer">
